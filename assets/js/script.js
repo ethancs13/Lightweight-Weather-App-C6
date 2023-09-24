@@ -10,7 +10,7 @@ var inputField = document.getElementById('inputField')
 let baseUrl = 'https://api.openweathermap.org/data/2.5/forecast?'
 // let city_name = prompt("Enter city name : ")
 let urlAlt = baseUrl + "appid=" + api_key + "&q=" + city_name
-let coorURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city_name + '&limit=50&appid=7beade074d53bf1fb3085db67e13a668'
+// let coorURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city_name + '&limit=50&appid=7beade074d53bf1fb3085db67e13a668'
 
 
 
@@ -25,7 +25,7 @@ function addToList() { // create list of cities to choose from
         liItem.addEventListener('click', (e) => {
             let val = e.target.textContent
             inputField.value = val
-            ac(val)
+            fetchData(val)
         })
         cityArrayUI.append(liItem)
     }
@@ -45,39 +45,54 @@ if (cityArrayUI.scrollTop < lastScrollTop){
     }
 }
 
-function ac(value){
+function fetchData(value){
+
     city_name = value
-    urlAlt = baseUrl + "appid=" + api_key + "&q=" + city_name
+    urlAlt = baseUrl + "appid=" + api_key + "&q=" + city_name // setup fetch url
 
     fetch(urlAlt)
     .then((response) => {
-        return response.json();
+        if(response.ok){
+            return response.json();
+        } else {
+            throw new Error('Something went wrong');
+        }
 
     }).then((data) => {
         // console.log(data)
         // console.log(data.list[5].dt_txt)
-        
-        console.log(data)
         let info = data.list[0]
 
-            const kelvin = info.main.temp;
-    
-            // Celsius is 273 degrees less than Kelvin
-            const celsius = kelvin - 273;
-    
-            // Calculating Fahrenheit temperature to the nearest integer
-            let fahrenheit = Math.floor(celsius * (9/5) + 32);
-    
-            document.getElementById('city_name').textContent = data.city.name
-            document.getElementById('temp').textContent ="Temp: " + fahrenheit + " °F"
-            document.getElementById('wind').textContent = "Wind: " + info.wind.speed + " mph"
-            document.getElementById('humidity').textContent = "Humidity: " + info.main.humidity + " %"
+        const kelvin = info.main.temp;
+        // Celsius is 273 degrees less than Kelvin
+        const celsius = kelvin - 273;
+        // Calculating Fahrenheit temperature to the nearest integer
+        let fahrenheit = Math.floor(celsius * (9/5) + 32);
 
-            for(var f = 0, i = 1; f < data.list.length; f+=8, i++){
-                document.getElementById('day_' + i + '--header').textContent = data.list[f].dt_txt.slice(0, 10)
-                document.getElementById('day_' + i + '--temp').textContent = "Temp: " + ((data.list[f].main.temp - 273) * (9/5) + 32).toFixed() + " °F"
-                document.getElementById('day_' + i + '--wind').textContent = "Wind: " + data.list[f].wind.speed + " mph"
-                document.getElementById('day_' + i + '--humidity').textContent = "Humidity: " + data.list[f].main.humidity + " %"
-            }
+        document.getElementById('city_name').textContent = data.city.name
+        document.getElementById('temp').textContent ="Temp: " + fahrenheit + " °F"
+        document.getElementById('wind').textContent = "Wind: " + info.wind.speed + " mph"
+        document.getElementById('humidity').textContent = "Humidity: " + info.main.humidity + " %"
+
+        for(var f = 0, i = 1; f < data.list.length; f+=8, i++){ // 5 day weather forecast (go through each day)
+            document.getElementById('day_' + i + '--header').textContent = mddyyyy_to_mmmdyyyy(data.list[f].dt_txt.slice(0, 10))
+            document.getElementById('day_' + i + '--temp').textContent = "Temp: " + ((data.list[f].main.temp - 273) * (9/5) + 32).toFixed() + " °F"
+            document.getElementById('day_' + i + '--wind').textContent = "Wind: " + data.list[f].wind.speed + " mph"
+            document.getElementById('day_' + i + '--humidity').textContent = "Humidity: " + data.list[f].main.humidity + " %"
+        }
 })
+.catch((error) => {
+    console.log(error)
+  });
 }
+
+
+function mddyyyy_to_mmmdyyyy(s) {
+    var s = s.split(/\D/)
+    dt = new Date(s[0], s[1] - 1, s[2]);
+    return dt.toLocaleString('en-CA', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+  }

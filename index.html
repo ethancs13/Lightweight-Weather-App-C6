@@ -25,9 +25,9 @@
                 <h4>Search for a City</h4>
 
                 <div class="search_area">
-                    <!-- onkeyup=ac(this.value) -->
-                    <input type="text" list="datalist" id="inputField">
-                    <button type="submit" onclick=ac(this.previousElementSibling.value)>Search</button>
+                    
+                    <input type="text" list="datalist" id="inputField" onkeyup=fetchData(this.value)>
+                    <button type="submit" onclick=fetchData(this.previousElementSibling.value)>Search</button>
                 </div>
             </div>
             <ul class="city_list"></ul>
@@ -35,7 +35,7 @@
         
         <div class="right-content">
             <section class="city_desc">
-                <h1 class="city_desc--header" id="city_name">city name</h1>
+                <h1 class="city_desc--header" id="city_name"></h1>
 
                 <div id="temp">Temp:</div>
                 <div id="wind">Wind:</div>
@@ -46,7 +46,7 @@
                 <div class="forecast_items">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" id="day_1--header">Title</h5>
+                            <h5 class="card-title" id="day_1--header"></h5>
                             <div class="card-text">
                                 <p id="day_1--temp">Temp:</p>
                                 <p id="day_1--wind">Wind:</p>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" id="day_2--header">Title</h5>
+                            <h5 class="card-title" id="day_2--header"></h5>
                             <div class="card-text">
                                 <p id="day_2--temp">Temp:</p>
                                 <p id="day_2--wind">Wind:</p>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" id="day_3--header">Title</h5>
+                            <h5 class="card-title" id="day_3--header"></h5>
                             <div class="card-text">
                                 <p id="day_3--temp">Temp:</p>
                                 <p id="day_3--wind">Wind:</p>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" id="day_4--header">Title</h5>
+                            <h5 class="card-title" id="day_4--header"></h5>
                             <div class="card-text">
                                 <p id="day_4--temp">Temp:</p>
                                 <p id="day_4--wind">Wind:</p>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title" id="day_5--header">Title</h5>
+                            <h5 class="card-title" id="day_5--header"></h5>
                             <div class="card-text">
                                 <p id="day_5--temp">Temp:</p>
                                 <p id="day_5--wind">Wind:</p>
