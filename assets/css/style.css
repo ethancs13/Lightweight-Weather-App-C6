@@ -7,7 +7,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 header {
-    background-color: blue;
+    background: linear-gradient(.25turn, #e66465, 10%, rgb(27, 103, 225), 90%, #e66465);
     color: white;
     text-align: center;
 }
@@ -19,10 +19,9 @@ header {
     display: flex;
     flex-direction: column;
     width: 25%;
-    height: 100vh;
+    height: 100%;
     padding: 10px;
     margin: 10px;
-    border: solid black;
 }
 .search_area {
     display: flex;
@@ -30,7 +29,9 @@ header {
     justify-content: center;
     align-items: center;
 }
-
+#inputField {
+    width: 90%;
+}
 
 .right-content {
     width: 75%;
@@ -38,16 +39,32 @@ header {
     margin: 10px;
 }
 .city_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
     list-style: none;
-    height: 10rem;
+    height: 30rem;
     margin: 5px;
-    border: solid black;
     overflow-x: hidden;
     overflow-y: auto;
 }
+.city_list li {
+    color: black;
+    text-align: center;
+    background-color: rgb(152, 154, 180);
+    margin: 5px -20px;
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+}
+.city_list li:hover {
+    background-color: rgb(195, 198, 222);
+}
 .city_desc {
-    border: solid black;
     padding: 10px;
+    background-color: rgb(67, 130, 247);
+    border-radius: 20px;
+    margin-top: 30px;
 }
 .city_desc--header {
     font-size: 30px;
@@ -60,9 +77,33 @@ header {
     flex-direction: row;
     justify-content: space-around;
     height: 250px;
+    width: 100%;
+}
+.forecast_items .card {
+    width: 190px;
+    border-radius: 12px;
+    background: linear-gradient(rgb(37, 100, 218), #9198e5);
+    color: white;
 }
 .forecast_container h1{
     font-size: 26px;
     padding: 10px;
     font-weight: bolder;
+}
+.card-title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.city_desc--header {
+    color: black;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: solid rgba(0, 0, 0, 0.201) 0.5px;
+}
+#temp, #wind, #humidity {
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 700;
 }
