@@ -1,11 +1,3 @@
-body {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-}
 header {
     background: linear-gradient(.25turn, #2d5492, 10%, rgb(35, 42, 121), 90%, #2d5492);
     color: white;
@@ -19,7 +11,7 @@ header {
     display: flex;
     flex-direction: column;
     width: 25%;
-    height: 100%;
+    height: 25rem;
     padding: 10px;
     margin: 10px;
 }
@@ -71,27 +63,43 @@ header {
     color: rgba(255, 255, 255, 0.779);
     display: flex;
     font-size: 35px;
-    background-color: #e664646f;
-    width: 40%;
+    background-color: #64aee66f;
+    width: 50%;
     border-radius: 20px;
     text-align: center;
     align-items: start;
     justify-content: center;
     margin-left: 10px;
-    margin-bottom: 20px;
+
     padding: 10px;
     border-bottom: solid rgba(0, 0, 0, 0.201) 0.5px;
 }
+.day_1--sub_header, .day_2--sub_header, .day_3--sub_header, .day_4--sub_header, .day_5--sub_header {
+    color: lightblue;
+    margin-top: -35px;
+    margin-bottom: 40px;
+}
+#sub_header {
+    color: lightblue;
+    padding: 15px 5px;
+    border-bottom: solid black 0.5px;
+}
 
+.forecast_container {
+    display: flex;
+    justify-content: space-between;
+    
+}
 .forecast_items{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    height: 250px;
+    flex-wrap: wrap;
+
     width: 100%;
 }
 .forecast_items .card {
-    width: 190px;
+    width: 200px;
     border-radius: 12px;
     background: linear-gradient(rgb(61, 57, 101), #23296b);
     color: white;
@@ -110,4 +118,43 @@ header {
     padding: 5px;
     font-size: 20px;
     font-weight: 700;
+}
+
+@media screen and (max-width: 1050px) {
+    .forecast_items {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .forecast_items .card {
+        width: 96%;
+        margin: 20px;
+    }
+    .city_desc--header{
+        width: 96%;
+        padding: 10px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .main{
+        flex-direction: column;
+        height:800px;
+        overflow: hidden;
+    }
+    .left-aside {
+        width: 100%;
+    }
+    .right-content{
+        width: 95%;
+        margin: 10px 10px;
+        padding-left: 10px;
+    }
+    .city_desc--header{
+        width: 96%;
+        padding: 10px;
+    }
+    .body h1{
+        color: red;
+        display: flex;
+        justify-content: center;
+    }
 }

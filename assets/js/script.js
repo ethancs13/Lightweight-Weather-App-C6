@@ -59,8 +59,10 @@ function fetchData(value){
         }
 
     }).then((data) => {
-        // console.log(data)
-        // console.log(data.list[5].dt_txt)
+        console.log(data)
+
+        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        const d = new Date();
         let info = data.list[0]
 
         const kelvin = info.main.temp;
@@ -69,13 +71,40 @@ function fetchData(value){
         // Calculating Fahrenheit temperature to the nearest integer
         let fahrenheit = Math.floor(celsius * (9/5) + 32);
 
-        document.getElementById('city_name').textContent = data.city.name
+        let weatherType = data.list[0].weather[0].main
+        var emoji;
+        if(weatherType === 'Clear'){
+            emoji = ' ☀️'
+            console.log("clear")
+        } else if (weatherType === 'Rain') {
+            emoji = ' 🌧️'
+            console.log("rain")
+        } else if (weatherType === 'Clouds'){
+            emoji = ' 🌤️'
+            console.log("clouds")
+        } else if (weatherType === 'Thunderstorm'){
+            emoji = ' ⛈️'
+            console.log("thunderstorm")
+        } else if (weatherType === 'Drizzle'){
+            emoji = ' 🌦️'
+            console.log("drizzle")
+        } else if (weatherType === 'Snow'){
+            emoji = ' 🌨️'
+            console.log("snow")
+        } 
+
+        document.getElementById('sub_header').textContent = data.list[0].weather[0].description
+        // document.getElementById('day_' + i + '--header').textContent = mddyyyy_to_mmmdyyyy(data.list[f].dt_txt.slice(0, 10)) + emoji
+        document.getElementById('city_name').textContent = data.city.name + " | " + weekday[d.getDay()] + "\n " + mddyyyy_to_mmmdyyyy(data.list[0].dt_txt.slice(0, 10))
         document.getElementById('temp').textContent ="Temp: " + fahrenheit + " °F"
         document.getElementById('wind').textContent = "Wind: " + info.wind.speed + " mph"
         document.getElementById('humidity').textContent = "Humidity: " + info.main.humidity + " %"
 
+        
+// day_3--sub_header 
         for(var f = 0, i = 1; f < data.list.length; f+=8, i++){ // 5 day weather forecast (go through each day)
-            document.getElementById('day_' + i + '--header').textContent = mddyyyy_to_mmmdyyyy(data.list[f].dt_txt.slice(0, 10))
+            document.querySelector('.day_' + i + '--sub_header').textContent = data.list[f].weather[0].description
+            document.getElementById('day_' + i + '--header').textContent = weekday[d.getDay()+(i-1)] + " | " + mddyyyy_to_mmmdyyyy(data.list[f].dt_txt.slice(0, 10)) + emoji
             document.getElementById('day_' + i + '--temp').textContent = "Temp: " + ((data.list[f].main.temp - 273) * (9/5) + 32).toFixed() + " °F"
             document.getElementById('day_' + i + '--wind').textContent = "Wind: " + data.list[f].wind.speed + " mph"
             document.getElementById('day_' + i + '--humidity').textContent = "Humidity: " + data.list[f].main.humidity + " %"
