@@ -24,10 +24,14 @@ header {
 #inputField {
     width: 90%;
 }
+#forecast_header{
+    padding: 20px;
+    background: linear-gradient(.25turn, #2d5492, 20%, rgb(35, 42, 121), 80%, #2d5492);
+    color: white;
+}
 
 .right-content {
     width: 75%;
-    height: 200px;
     margin: 10px;
 }
 .city_list {
@@ -58,21 +62,21 @@ header {
     background-color: #23296b;
     border-radius: 20px;
     margin-top: 30px;
+    height: 50vh;
 }
 .city_desc--header {
     color: rgba(255, 255, 255, 0.779);
     display: flex;
     font-size: 35px;
     background-color: #64aee66f;
-    width: 50%;
-    border-radius: 20px;
+    width: 70%;
     text-align: center;
     align-items: start;
     justify-content: center;
     margin-left: 10px;
-
     padding: 10px;
     border-bottom: solid rgba(0, 0, 0, 0.201) 0.5px;
+    border-radius: 20px;
 }
 .day_1--sub_header, .day_2--sub_header, .day_3--sub_header, .day_4--sub_header, .day_5--sub_header {
     color: lightblue;
@@ -94,15 +98,15 @@ header {
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    flex-wrap: wrap;
-
+    flex-wrap: nowrap;
     width: 100%;
+    padding: 5px;
 }
 .forecast_items .card {
-    width: 200px;
     border-radius: 12px;
     background: linear-gradient(rgb(61, 57, 101), #23296b);
     color: white;
+    margin: 5px;
 }
 .forecast_container h1{
     font-size: 26px;
@@ -126,18 +130,39 @@ header {
         flex-wrap: nowrap;
     }
     .forecast_items .card {
-        width: 96%;
-        margin: 20px;
+        width: 98%;
+        margin: 10px;
     }
     .city_desc--header{
         width: 96%;
         padding: 10px;
     }
+    .city_desc{
+        height: 20rem;
+        margin: 0;
+    }
+    .left-aside {
+        height: 20rem;
+    }
+    .right-content{
+        height: 100%;
+    }
+    .card-title {
+        background-color: #2d5492;
+        height: 50px;
+        align-items: center;
+        border-radius: 20px;
+    }
+    .card-text{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }
 @media screen and (max-width: 700px) {
     .main{
         flex-direction: column;
-        height:800px;
+        height:700px;
         overflow: hidden;
     }
     .left-aside {
@@ -152,9 +177,5 @@ header {
         width: 96%;
         padding: 10px;
     }
-    .body h1{
-        color: red;
-        display: flex;
-        justify-content: center;
-    }
+    
 }
