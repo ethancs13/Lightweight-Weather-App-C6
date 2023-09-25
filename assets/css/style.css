@@ -7,7 +7,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 header {
-    background: linear-gradient(.25turn, #e66465, 10%, rgb(27, 103, 225), 90%, #e66465);
+    background: linear-gradient(.25turn, #2d5492, 10%, rgb(35, 42, 121), 90%, #2d5492);
     color: white;
     text-align: center;
 }
@@ -61,15 +61,11 @@ header {
     background-color: rgb(195, 198, 222);
 }
 .city_desc {
+    color: white;
     padding: 10px;
-    background-color: rgb(67, 130, 247);
+    background-color: #23296b;
     border-radius: 20px;
     margin-top: 30px;
-}
-.city_desc--header {
-    font-size: 30px;
-    padding: 0;
-    margin: 0;
 }
 
 .forecast_items{
@@ -82,7 +78,7 @@ header {
 .forecast_items .card {
     width: 190px;
     border-radius: 12px;
-    background: linear-gradient(rgb(37, 100, 218), #9198e5);
+    background: linear-gradient(rgb(61, 57, 101), #23296b);
     color: white;
 }
 .forecast_container h1{
@@ -96,7 +92,6 @@ header {
     margin-bottom: 40px;
 }
 .city_desc--header {
-    color: black;
     margin-left: 10px;
     margin-bottom: 20px;
     padding-bottom: 16px;
