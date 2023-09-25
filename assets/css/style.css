@@ -1,7 +1,11 @@
 header {
+    display: flex;
+    justify-content: center;
     background: linear-gradient(.25turn, #2d5492, 10%, rgb(35, 42, 121), 90%, #2d5492);
     color: white;
     text-align: center;
+    height: 60px;
+    align-items: center;
 }
 .main{
     display: flex;
@@ -21,9 +25,26 @@ header {
     justify-content: center;
     align-items: center;
 }
+.search_container h4{
+    text-align: center;
+    font-weight: 700;
+}
 #inputField {
     width: 90%;
 }
+#search_btn{
+    width: 90%;
+    padding: 2px;
+    margin: 10px;
+    background-color: #2d5492;
+    color: white;
+    border: solid white 1px;
+    border-radius: 5px;
+}
+#search_btn:hover {
+    background-color: #3c6ebd;
+}
+
 #forecast_header{
     padding: 20px;
     background: linear-gradient(.25turn, #2d5492, 20%, rgb(35, 42, 121), 80%, #2d5492);
@@ -47,14 +68,15 @@ header {
 .city_list li {
     color: black;
     text-align: center;
-    background-color: rgb(152, 154, 180);
+    font-weight: 600;
+    background-color: #4979c5;
     margin: 5px -20px;
     padding: 5px;
     width: 100%;
     border-radius: 5px;
 }
 .city_list li:hover {
-    background-color: rgb(195, 198, 222);
+    background-color: #2b66c4;
 }
 .city_desc {
     color: white;
@@ -88,16 +110,10 @@ header {
     padding: 15px 5px;
     border-bottom: solid black 0.5px;
 }
-
-.forecast_container {
-    display: flex;
-    justify-content: space-between;
-    
-}
 .forecast_items{
     display:flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     width: 100%;
     padding: 5px;
@@ -106,7 +122,9 @@ header {
     border-radius: 12px;
     background: linear-gradient(rgb(61, 57, 101), #23296b);
     color: white;
-    margin: 5px;
+    padding: 5px;
+    margin: auto;
+    min-width: 250px;
 }
 .forecast_container h1{
     font-size: 26px;
@@ -124,7 +142,7 @@ header {
     font-weight: 700;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1260px) {
     .forecast_items {
         flex-direction: column;
         flex-wrap: nowrap;
@@ -159,7 +177,7 @@ header {
         justify-content: space-around;
     }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 785px) {
     .main{
         flex-direction: column;
         height:700px;

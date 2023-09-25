@@ -22,11 +22,9 @@
         <div class="left-aside">
             <div class="search_container">
                 <h4>Search for a City</h4>
-
                 <div class="search_area">
-                    
                     <input type="text" list="datalist" id="inputField" onkeyup=fetchData(this.value)>
-                    <button type="submit" onclick=fetchData(this.previousElementSibling.value)>Search</button>
+                    <button id="search_btn" type="submit" onclick=fetchData(this.previousElementSibling.value)>Search</button>
                 </div>
             </div>
             <ul class="city_list"></ul>
