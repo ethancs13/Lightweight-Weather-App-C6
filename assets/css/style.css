@@ -81,10 +81,23 @@ header {
 .city_desc {
     color: white;
     padding: 10px;
-    background-color: #23296b;
+    /* background-color: #23296b; */
+        background-color: hsl(219, 56%, 26%);
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 44%, 42%) 35%,
+            hsl(241, 46%, 36%) 75%,
+            hsl(233, 50%, 34%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(231, 50%, 36%) 35%,
+            hsl(229, 53%, 38%) 75%,
+            hsl(218, 63%, 33%) 80%,
+            transparent 100%);
     border-radius: 20px;
-    margin-top: 30px;
-    height: 50vh;
+    margin: 30px 0;
+    height: 25rem;
 }
 .city_desc--header {
     color: rgba(255, 255, 255, 0.779);

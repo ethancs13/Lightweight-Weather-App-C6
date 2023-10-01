@@ -25,6 +25,7 @@ Simply run the index.html in a browser window
 * [Bootstrap](https://getbootstrap.com/) - CSS framework
 * [Javascript](https://www.javascript.com/) - programming language
 * [OpenWeatherMap](https://openweathermap.org/api) - third party API
+* [jquery](https://jquery.com/) - js framework
 
 
 ## Author 🔑

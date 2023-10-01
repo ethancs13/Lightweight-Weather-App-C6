@@ -8,11 +8,9 @@ var inputField = document.getElementById('inputField')
 
 
 let baseUrl = 'https://api.openweathermap.org/data/2.5/forecast?'
-// let city_name = prompt("Enter city name : ")
+
 let urlAlt = baseUrl + "appid=" + api_key + "&q=" + city_name
 // let coorURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city_name + '&limit=50&appid=7beade074d53bf1fb3085db67e13a668'
-
-
 
 
 let num = 0;
@@ -46,7 +44,6 @@ if (cityArrayUI.scrollTop < lastScrollTop){
 }
 
 function fetchData(value){
-
     city_name = value
     urlAlt = baseUrl + "appid=" + api_key + "&q=" + city_name // setup fetch url
 
@@ -59,8 +56,7 @@ function fetchData(value){
         }
 
     }).then((data) => {
-        console.log(data)
-
+        // console.log(data)
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
         const d = new Date();
         let info = data.list[0]
@@ -112,10 +108,15 @@ function fetchData(value){
             document.getElementById('day_' + i + '--wind').textContent = "Wind: " + data.list[f].wind.speed + " mph"
             document.getElementById('day_' + i + '--humidity').textContent = "Humidity: " + data.list[f].main.humidity + " %"
         }
+        
+        autoCompleteItems.push(data.city.name)
+        console.log(autoCompleteItems)
+        localStorage.setItem('autoComplete', JSON.stringify(autoCompleteItems))
 })
 .catch((error) => {
     console.log(error)
-  });
+});
+
 }
 
 
@@ -128,3 +129,17 @@ function yyyymmdd_to_mmmdd(s) {
     //   year: 'numeric'
     });
   }
+
+var autoCompleteItems = []
+  $( function() {
+    if(localStorage.getItem('autoComplete')){
+        let array = JSON.parse(localStorage.getItem('autoComplete'));
+        autoCompleteItems = array;
+    } else {
+        return;
+    }
+    
+    $( "#inputField" ).autocomplete({
+      source: autoCompleteItems
+    });
+  } );
